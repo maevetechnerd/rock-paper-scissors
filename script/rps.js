@@ -16,6 +16,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = prompt("Rock, Paper or Scissor?", "");
+function game() {
+    playRound(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);
+    playRound(playerSelection, computerSelection);
+}
+
+const playerSelection = prompt("Rock, paper or scissor?", "");
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+console.log(game(playerSelection, computerSelection));
