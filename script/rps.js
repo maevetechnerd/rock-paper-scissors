@@ -1,29 +1,20 @@
 function getComputerChoice(rpsAi) {
-    const rps = ["Rock", "Paper", "Scissor"];
+    const rps = ["rock", "paper", "scissor"];
     rpsAi = rps[Math.floor(Math.random() * rps.length)];
     return rpsAi;
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "Rock" && computerSelection === "Paper" || playerSelection === "Paper" && computerSelection === "Scissor" || playerSelection === "Scissor" && computerSelection === "Rock") {
+    if (playerSelection === "rock".toLowerCase() && computerSelection === "paper".toLowerCase() || playerSelection === "paper".toLowerCase() && computerSelection === "scissor".toLowerCase() || playerSelection === "scissor".toLowerCase() && computerSelection === "rock".toLowerCase()) {
         return `${computerSelection} beats ${playerSelection}, you lose!`;
     }
-    else if (playerSelection === "Rock" && computerSelection === "Scissor" || playerSelection === "Scissor" && computerSelection === "Paper" || playerSelection === "Paper" && computerSelection === "Rock") {
+    else if (playerSelection === "rock".toLowerCase() && computerSelection === "scissor".toLowerCase() || playerSelection === "paper".toLowerCase() && computerSelection === "rock".toLowerCase() || playerSelection === "scissor".toLowerCase() && computerSelection === "paper".toLowerCase()) {
         return `${playerSelection} beats ${computerSelection}, you win!`;
     }
     else if (playerSelection === computerSelection) {
-        return `${playerSelection} and ${computerSelection} are the same. It is a draw!`;
+        return `${playerSelection} and ${computerSelection} is the same. It is a draw!`;
     }
 }
-
-function game() {
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-    playRound(playerSelection, computerSelection);
-}
-
-const playerSelection = prompt("Rock, paper or scissor?", "");
+const playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
 const computerSelection = getComputerChoice();
-console.log(game(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
