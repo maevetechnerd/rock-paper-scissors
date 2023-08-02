@@ -5,7 +5,7 @@ let playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
 let computerSelection = getComputerChoice();
 
 function getComputerChoice(rpsAi) {
-    const rps = ["rock", "paper", "scissor"];
+    let rps = ["rock", "paper", "scissor"];
     rpsAi = rps[Math.floor(Math.random() * rps.length)];
     return rpsAi;
 }
@@ -74,10 +74,10 @@ function game() {
     console.log("Points");
     console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
 
-    if (computerScore === 5) {
-        return `You got 5 points and computer got ${computerScore}. You lose!`;
+    if (computerScore > playerScore) {
+        return `You got ${playerScore} points and computer got ${computerScore}. You lose!`;
     }
-    else {
+    else if (computerScore < playerScore) {
         return `You got ${playerScore} and computer got ${computerScore}. You win!`;
     }
 }
