@@ -1,7 +1,8 @@
-/* This is a work in progress project from The Odin Project's
- * curriculum.
- */
+let computerScore = 0;
+let playerScore = 0;
 
+let playerSelection = prompt("rock, paper or scissor?", "").toLowerCase(); 
+let computerSelection = getComputerChoice();
 
 function getComputerChoice(rpsAi) {
     const rps = ["rock", "paper", "scissor"];
@@ -10,21 +11,75 @@ function getComputerChoice(rpsAi) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "rock".toLowerCase() && computerSelection === "paper".toLowerCase() || playerSelection === "paper".toLowerCase() && computerSelection === "scissor".toLowerCase() || playerSelection === "scissor".toLowerCase() && computerSelection === "rock".toLowerCase()) {
-        return `${computerSelection} beats ${playerSelection}, you lose!`;
+    if (playerSelection == "rock" && computerSelection == "paper") {
+        computerScore++;
+        return "Paper beats rock. You lose!";
     }
-    else if (playerSelection === "rock".toLowerCase() && computerSelection === "scissor".toLowerCase() || playerSelection === "paper".toLowerCase() && computerSelection === "rock".toLowerCase() || playerSelection === "scissor".toLowerCase() && computerSelection === "paper".toLowerCase()) {
-        return `${playerSelection} beats ${computerSelection}, you win!`;
+    else if (playerSelection == "rock" && computerSelection == "scissor") {
+        playerScore++;
+        return "Rock beats scissors. You win!";
     }
-    else if (playerSelection === computerSelection) {
-        return `${playerSelection} and ${computerSelection} is the same. It is a draw!`;
+    else if (playerSelection == "paper" && computerSelection == "scissor") {
+        computerScore++;
+        return "Scissor beats paper. You lose!";
+    }
+    else if (playerSelection == "paper" && computerSelection == "rock") {
+        playerScore++;
+        return "Paper beats rock. You win!";
+    }
+    else if (playerSelection == "scissor" && computerSelection == "rock") {
+        computerScore++;
+        return "Rock beats scissors. You lose!";
+    }
+    else if (playerSelection == "scissor" && computerSelection == "paper") {
+        playerScore++;
+        return "Scissors beats rock. You win!";
+    }
+    else {
+        return `It's a draw!`;
     }
 }
 
-// How to make the game function and play 5 rounds? 
-/* game function WIP. Last step to finish the project.
- * I am now confused on how to implement it. 
- */
-const playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    console.log("Round 1");
+    playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
+    playRound(playerSelection, computerSelection);
+    
+    console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
+
+    console.log("Round 2");
+    playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
+    playRound(playerSelection, computerSelection);
+    
+    console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
+
+    console.log("Round 3");
+    playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
+    playRound(playerSelection, computerSelection);
+    
+    console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
+
+    console.log("Round 4");
+    playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
+    playRound(playerSelection, computerSelection);
+    
+    console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
+
+    console.log("Round 5");
+    playerSelection = prompt("rock, paper or scissor?", "").toLowerCase();
+    playRound(playerSelection, computerSelection);
+    
+    console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
+
+    console.log("Points");
+    console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
+
+    if (computerScore === 5) {
+        return `You got 5 points and computer got ${computerScore}. You lose!`;
+    }
+    else {
+        return `You got ${playerScore} and computer got ${computerScore}. You win!`;
+    }
+}
+
+console.log(game());
